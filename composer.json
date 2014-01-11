@@ -1,0 +1,25 @@
+{
+    "name": "artkost/yii2-uikit",
+    "description": "The UIkit front-end framework extension for the Yii framework",
+    "keywords": ["yii", "uikit"],
+    "type": "yii2-extension",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/artkost/yii2-uikit/issues",
+        "source": "https://github.com/artkost/yii2-uikit"
+    },
+    "authors": [
+        {
+            "name": "Nikolay Kostyurin",
+            "email": "nikolay@artkost.ru"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*",
+        "uikit/uikit": "2.1.*"
+    },
+    "autoload": {
+        "psr-0": { "yii\\uikit\\": "" }
+    },
+    "target-dir": "yii/uikit"
+}
