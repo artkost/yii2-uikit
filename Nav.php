@@ -148,13 +148,15 @@ class Nav extends Widget
 		if (is_string($item)) {
 			return $item;
 		}
+
 		if (!isset($item['label'])) {
 			throw new InvalidConfigException("The 'label' option is required.");
 		}
+
 		$label = $this->encodeLabels ? Html::encode($item['label']) : $item['label'];
 		$options = ArrayHelper::getValue($item, 'options', []);
 		$items = ArrayHelper::getValue($item, 'items');
-		$url = Html::url(ArrayHelper::getValue($item, 'url', '#'));
+		$url = Html::url(ArrayHelper::getValue($item, 'url', false));
 		$linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
 
 		if (isset($item['active'])) {
@@ -175,7 +177,13 @@ class Nav extends Widget
 			}
 		}
 
-        return Html::tag('li', Html::a($label, $url, $linkOptions) . $items, $options);
+        $link = $label;
+
+        if ($url) {
+            $link = Html::a($label, $url, $linkOptions);
+        }
+
+        return Html::tag('li', $link . $items, $options);
 	}
 
 
