@@ -45,22 +45,15 @@ class Widget extends \yii\base\Widget
 	}
 
 	/**
-	 * Registers a specific Bootstrap plugin and the related events
-	 * @param string $name the name of the Bootstrap plugin
+	 * Registers assets and the related events
 	 */
-	protected function registerPlugin($name)
+	protected function registerAsset()
 	{
 		$view = $this->getView();
 
 		UIkitPluginAsset::register($view);
 
 		$id = $this->options['id'];
-
-		if ($this->clientOptions !== false) {
-			$options = empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
-			$js = "jQuery('#$id').$name($options);";
-			$view->registerJs($js);
-		}
 
 		if (!empty($this->clientEvents)) {
 			$js = [];
@@ -70,4 +63,12 @@ class Widget extends \yii\base\Widget
 			$view->registerJs(implode("\n", $js));
 		}
 	}
+
+    /**
+     * @return string options array as json string
+     */
+    protected function jsonClientOptions()
+    {
+        return empty($this->clientOptions) ? '' : Json::encode($this->clientOptions);
+    }
 }
