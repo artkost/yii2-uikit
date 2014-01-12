@@ -87,6 +87,11 @@ class Nav extends Widget
      */
     public $accordion = false;
 
+    /**
+     * @var bool navbar mode
+     */
+    public $navbar = false;
+
 	/**
 	 * Initializes the widget.
 	 */
@@ -102,7 +107,7 @@ class Nav extends Widget
 			$this->params = $_GET;
 		}
 
-		Html::addCssClass($this->options, 'uk-nav');
+		Html::addCssClass($this->options, $this->navbar ? 'uk-navbar-nav' : 'uk-nav');
 
         if ($this->accordion) {
             $this->options['data-uk-nav'] = $this->jsonClientOptions();
