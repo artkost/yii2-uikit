@@ -4,14 +4,14 @@ namespace yii\uikit;
 use yii\helpers\Html;
 
 /**
- * Button renders a bootstrap button.
+ * Button renders a UIkit button.
  *
  * For example,
  *
  * ```php
  * echo Button::widget([
  *     'label' => 'Action',
- *     'options' => ['class' => 'btn-lg'],
+ *     'options' => ['class' => 'uk-button-primary'],
  * ]);
  * ```
  * @see http://www.getuikit.com/docs/button.html
@@ -51,6 +51,5 @@ class Button extends Widget
 	public function run()
 	{
 		echo Html::tag($this->tagName, $this->encodeLabel ? Html::encode($this->label) : $this->label, $this->options);
-		$this->registerPlugin('button');
 	}
 }
