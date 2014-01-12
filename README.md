@@ -1,13 +1,13 @@
 UIkit Extension for Yii 2
 =====================================
 
-This is the [[]] extension for Yii 2. It encapsulates [[]] components
-and plugins in terms of Yii widgets, and thus makes using [[]] components/plugins
+This is the UIkit extension for Yii 2. Clone of Yii 2 Bootstrap extension. It encapsulates UIkit components
+and plugins in terms of Yii widgets, and thus makes using UIkit components/addons
 in Yii applications extremely easy. For example, the following
 single line of code in a view file would render a [[]] plugin:
 
 ```php
-<?= yii\bootstrap\Progress::widget(['percent' => 60, 'label' => 'test']) ?>
+<?= yii\uikit\Progress::widget(['percent' => 60, 'label' => 'test']) ?>
 ```
 
 
@@ -19,13 +19,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require yiisoft/yii2-bootstrap "*"
+php composer.phar require artkost/yii2-uikit "*"
 ```
 
 or add
 
 ```
-"yiisoft/yii2-bootstrap": "*"
+"artkost/yii2-uikit": "*"
 ```
 
 to the require section of your `composer.json` file.
