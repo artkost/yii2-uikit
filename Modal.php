@@ -76,8 +76,8 @@ class Modal extends Widget
 		$this->initOptions();
 
 		echo $this->renderToggleButton() . "\n";
-		echo Html::beginTag('div', 'uk-modal') . "\n";
-		echo Html::beginTag('div', ['class' => $this->options]) . "\n";
+		echo Html::beginTag('div', ['class' => 'uk-modal']) . "\n";
+		echo Html::beginTag('div', $this->options) . "\n";
         echo $this->renderCloseButton();
 	}
 
