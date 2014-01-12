@@ -141,7 +141,7 @@ class Dropdown extends Widget
         }
 
         if (is_array($items)) {
-            return Nav::widget(['options' => ['class' => $this->itemsOptions], 'items' => $items]);
+            return Nav::widget(['options' => $this->itemsOptions, 'items' => $items]);
         }
 
         return $items;
