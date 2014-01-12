@@ -28,6 +28,11 @@ use yii\helpers\Html;
 class Modal extends Widget
 {
 
+    /**
+     * @var array the HTML attributes for the dialog container tag.
+     */
+    public $dialogOptions = [];
+
 	/**
 	 * @var array the options for rendering the close button tag.
 	 * The close button is displayed in the header of the modal window. Clicking
@@ -75,11 +80,9 @@ class Modal extends Widget
 
 		$this->initOptions();
 
-        $id = $this->options['id'];
-        unset($this->options['id']);
 		echo $this->renderToggleButton() . "\n";
-		echo Html::beginTag('div', ['class' => 'uk-modal', 'id' => $id]) . "\n";
 		echo Html::beginTag('div', $this->options) . "\n";
+		echo Html::beginTag('div', $this->dialogOptions) . "\n";
         echo $this->renderCloseButton();
 	}
 
@@ -142,14 +145,15 @@ class Modal extends Widget
 	protected function initOptions()
 	{
 		$this->options = array_merge([
+            'class' => 'uk-modal',
 			'role' => 'dialog',
 			'tabindex' => -1,
 		], $this->options);
 
-		Html::addCssClass($this->options, 'uk-modal-dialog');
+		Html::addCssClass($this->dialogOptions, 'uk-modal-dialog');
 
         if ($this->frameless) {
-            Html::addCssClass($this->options, 'uk-modal-dialog-frameless');
+            Html::addCssClass($this->dialogOptions, 'uk-modal-dialog-frameless');
         }
 
 		if ($this->closeButton !== null) {
