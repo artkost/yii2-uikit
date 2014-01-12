@@ -103,11 +103,17 @@ class Modal extends Widget
 	protected function renderToggleButton()
 	{
 		if ($this->toggleButton !== null) {
-			$tag = ArrayHelper::remove($this->toggleButton, 'tag', 'button');
+			$tag = ArrayHelper::remove($this->toggleButton, 'tag', 'a');
 			$label = ArrayHelper::remove($this->toggleButton, 'label', 'Show');
+
 			if ($tag === 'button' && !isset($this->toggleButton['type'])) {
 				$this->toggleButton['type'] = 'button';
 			}
+
+            if ($tag === 'a' && !isset($this->toggleButton['href'])) {
+                $this->toggleButton['href'] = '#' . $this->options['id'];
+            }
+
 			return Html::tag($tag, $label, $this->toggleButton);
 		} else {
 			return null;
@@ -145,11 +151,11 @@ class Modal extends Widget
 	protected function initOptions()
 	{
 		$this->options = array_merge([
-            'class' => 'uk-modal',
 			'role' => 'dialog',
 			'tabindex' => -1,
 		], $this->options);
 
+        Html::addCssClass($this->options, 'uk-modal');
 		Html::addCssClass($this->dialogOptions, 'uk-modal-dialog');
 
         if ($this->frameless) {
