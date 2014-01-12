@@ -122,6 +122,8 @@ class Dropdown extends Widget
                 $this->toggleButton['href'] = '#' . $this->options['id'];
             }
 
+            Html::addCssClass($this->tagOptions, 'uk-button-dropdown');
+
             return Html::tag($tag, $label, $this->toggleButton);
         } else {
             return null;
