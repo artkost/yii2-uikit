@@ -115,7 +115,9 @@ class Nav extends Widget
 	public function run()
 	{
 		echo $this->renderItems();
-		UIkitAsset::register($this->getView());
+        if ($this->accordion) {
+            $this->registerAsset();
+        }
 	}
 
 	/**
