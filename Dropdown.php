@@ -59,6 +59,8 @@ class Dropdown extends Widget
 	 */
 	public $items = [];
 
+    public $itemsOptions = [];
+
     public $toggleButton = [];
 
     /**
@@ -134,8 +136,12 @@ class Dropdown extends Widget
 	 */
 	protected function renderItems($items)
 	{
+        if ($this->tag) {
+            Html::addCssClass($this->itemsOptions, 'uk-nav-dropdown');
+        }
+
         if (is_array($items)) {
-            return Nav::widget(['options' => ['class' => 'uk-nav-dropdown'], 'items' => $items]);
+            return Nav::widget(['options' => ['class' => $this->itemsOptions], 'items' => $items]);
         }
 
         return $items;
