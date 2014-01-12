@@ -82,6 +82,10 @@ class Dropdown extends Widget
 
         $this->tagOptions['data-uk-dropdown'] = $this->jsonClientOptions();
 
+        if ($this->toggleButton !== null) {
+            Html::addCssClass($this->tagOptions, 'uk-button-dropdown');
+        }
+
         if ($this->tag) {
             echo Html::beginTag($this->tag, $this->tagOptions) . "\n";
         }
@@ -121,8 +125,6 @@ class Dropdown extends Widget
             if ($tag === 'a' && !isset($this->toggleButton['href'])) {
                 $this->toggleButton['href'] = '#' . $this->options['id'];
             }
-
-            Html::addCssClass($this->tagOptions, 'uk-button-dropdown');
 
             return Html::tag($tag, $label, $this->toggleButton);
         } else {
