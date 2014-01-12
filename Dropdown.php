@@ -2,6 +2,7 @@
 namespace yii\uikit;
 
 use yii\base\InvalidConfigException;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 /**
@@ -9,10 +10,32 @@ use yii\helpers\Html;
  *
  * ```php
  * use yii\uikit\Dropdown;
- * use yii\widgets\Menu;
+ * use yii\uikit\Nav;
  *
- * Dropdown::begin(['tagOptions' => ['class' => 'uk-button-dropdown']]);
- * echo Button::widget(['label' => 'Action']);
+ * Dropdown::begin([
+ *  'tagOptions' => ['class' => 'uk-button-dropdown'],
+ *  'toggleButton' => ['label' => 'Action'],
+ *  'items' => []
+ * ]);
+*   echo Nav::widget([
+ *     'options' => ['class' => 'uk-nav-dropdown'],
+ *     'items' => [
+ *         [
+ *             'label' => 'Home',
+ *             'url' => ['site/index'],
+ *             'linkOptions' => [...],
+ *         ],
+ *         [
+ *             'label' => 'Dropdown',
+ *             'items' => [
+ *                  ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+ *                  '<li class="divider"></li>',
+ *                  '<li class="dropdown-header">Dropdown Header</li>',
+ *                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+ *             ],
+ *         ],
+ *     ],
+ * ]);
  * Dropdown::end();
  * ```
  *
@@ -36,11 +59,13 @@ class Dropdown extends Widget
 	 */
 	public $items = [];
 
+    public $toggleButton = [];
+
     /**
      * Container tag name, by default it can be div
      * @var string
      */
-    public $tagName = '';
+    public $tag = 'div';
 
     public $tagOptions = [];
 
@@ -55,10 +80,11 @@ class Dropdown extends Widget
 
         $this->tagOptions['data-uk-dropdown'] = $this->jsonClientOptions();
 
-        if ($this->tagName) {
-            echo Html::beginTag($this->tagName, $this->tagOptions);
+        if ($this->tag) {
+            echo Html::beginTag($this->tag, $this->tagOptions) . "\n";
         }
-
+        echo $this->renderToggleButton() . "\n";
+        echo Html::beginTag('div', $this->options);
 	}
 
 	/**
@@ -66,16 +92,39 @@ class Dropdown extends Widget
 	 */
 	public function run()
 	{
-        echo Html::beginTag('div', $this->options);
 		echo $this->renderItems($this->items);
         echo Html::endTag('div');
 
-        if ($this->tagName) {
-            echo Html::endTag($this->tagName);
+        if ($this->tag) {
+            echo Html::endTag($this->tag);
         }
 
         $this->registerAsset();
 	}
+
+    /**
+     * Renders the toggle button.
+     * @return string the rendering result
+     */
+    protected function renderToggleButton()
+    {
+        if ($this->toggleButton !== null) {
+            $tag = ArrayHelper::remove($this->toggleButton, 'tag', 'a');
+            $label = ArrayHelper::remove($this->toggleButton, 'label', 'Show');
+
+            if ($tag === 'button' && !isset($this->toggleButton['type'])) {
+                $this->toggleButton['type'] = 'button';
+            }
+
+            if ($tag === 'a' && !isset($this->toggleButton['href'])) {
+                $this->toggleButton['href'] = '#' . $this->options['id'];
+            }
+
+            return Html::tag($tag, $label, $this->toggleButton);
+        } else {
+            return null;
+        }
+    }
 
 	/**
 	 * Renders menu items.
