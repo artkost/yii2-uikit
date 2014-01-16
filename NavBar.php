@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use yii\helpers\Html;
 

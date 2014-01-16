@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use Yii;
 use yii\base\InvalidConfigException;

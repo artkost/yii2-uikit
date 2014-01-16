@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
@@ -9,8 +9,8 @@ use yii\helpers\Html;
  * Dropdown renders a UIkit dropdown menu component.
  *
  * ```php
- * use yii\uikit\Dropdown;
- * use yii\uikit\Nav;
+ * use artkost\uikit\Dropdown;
+ * use artkost\uikit\Nav;
  *
  * Dropdown::begin([
  *  'tagOptions' => ['class' => 'uk-button-dropdown'],

@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use Yii;
 use yii\helpers\ArrayHelper;
@@ -12,6 +12,8 @@ use yii\helpers\Html;
  * and [[end()]] calls within the modal window:
  *
  * ~~~php
+ * use artkost\uikit\Modal;
+ *
  * Modal::begin([
  *     'toggleButton' => ['label' => 'click me'],
  * ]);

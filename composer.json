@@ -19,7 +19,7 @@
         "uikit/uikit": "2.1.*"
     },
     "autoload": {
-        "psr-0": { "yii\\uikit\\": "" }
+        "psr-0": { "artkost\\uikit\\": "" }
     },
-    "target-dir": "yii/uikit"
+    "target-dir": "artkost/uikit"
 }

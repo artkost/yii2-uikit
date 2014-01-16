@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use yii\web\AssetBundle;
 
@@ -16,6 +16,6 @@ class UIkitAlmostFlatAsset extends AssetBundle
         'css/uikit.almost-flat.css',
     ];
     public $depends = [
-        'yii\uikit\UIkitAsset',
+        'artkost\uikit\UIkitAsset',
     ];
 }

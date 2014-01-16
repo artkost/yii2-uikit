@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use yii\helpers\Html;
 
@@ -9,6 +9,8 @@ use yii\helpers\Html;
  * For example,
  *
  * ```php
+ * use artkost\uikit\Button;
+ *
  * echo Button::widget([
  *     'label' => 'Action',
  *     'options' => ['class' => 'uk-button-primary'],

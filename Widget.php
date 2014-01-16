@@ -1,11 +1,11 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use Yii;
 use yii\helpers\Json;
 
 /**
- * \yii\uikit\Widget is the base class for all UIkit widgets.
+ * artkost\uikit\Widget is the base class for all UIkit widgets.
  *
  * @author Nikolay Kostyurin <nikolay@artkost.ru>
  * @since 2.0

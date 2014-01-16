@@ -1,5 +1,5 @@
 <?php
-namespace yii\uikit;
+namespace artkost\uikit;
 
 use yii\web\AssetBundle;
 
@@ -17,6 +17,6 @@ class UIkitPluginAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\JqueryAsset',
-        'yii\uikit\UIkitAsset',
+        'artkost\uikit\UIkitAsset',
     ];
 }
