@@ -1,5 +1,6 @@
 <?php
-namespace yii\uikit;
+
+namespace artkost\uikit;
 
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
