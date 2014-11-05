@@ -16,7 +16,7 @@
     ],
     "require": {
         "yiisoft/yii2": "*",
-        "uikit/uikit": "2.1.*"
+        "uikit/uikit": "2.*"
     },
     "autoload": {
         "psr-0": { "artkost\\uikit\\": "" }
