@@ -5,6 +5,7 @@ use Yii;
 use yii\base\InvalidConfigException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 /**
  * Nav renders a nav HTML component.
@@ -81,16 +82,16 @@ class Nav extends Widget
 	 * @see isItemActive
 	 */
 	public $params;
-    /**
+	/**
      * Enables accordion for parent items
      * @var bool
      */
-    public $accordion = false;
+	public $accordion = false;
 
-    /**
+	/**
      * @var bool navbar mode
      */
-    public $navbar = false;
+	public $navbar = false;
 
 	/**
 	 * Initializes the widget.
@@ -110,8 +111,8 @@ class Nav extends Widget
 		Html::addCssClass($this->options, $this->navbar ? 'uk-navbar-nav' : 'uk-nav');
 
         if ($this->accordion) {
-            $this->options['data-uk-nav'] = $this->jsonClientOptions();
-        }
+			$this->options['data-uk-nav'] = $this->jsonClientOptions();
+		}
 	}
 
 	/**
@@ -120,9 +121,10 @@ class Nav extends Widget
 	public function run()
 	{
 		echo $this->renderItems();
-        if ($this->accordion) {
-            $this->registerAsset();
-        }
+
+		if ($this->accordion) {
+			$this->registerAsset();
+		}
 	}
 
 	/**
@@ -131,6 +133,7 @@ class Nav extends Widget
 	public function renderItems()
 	{
 		$items = [];
+
 		foreach ($this->items as $i => $item) {
 			if (isset($item['visible']) && !$item['visible']) {
 				unset($items[$i]);
@@ -161,7 +164,7 @@ class Nav extends Widget
 		$label = $this->encodeLabels ? Html::encode($item['label']) : $item['label'];
 		$options = ArrayHelper::getValue($item, 'options', []);
 		$items = ArrayHelper::getValue($item, 'items');
-		$url = Html::url(ArrayHelper::getValue($item, 'url', false));
+		$url = Url::to(ArrayHelper::getValue($item, 'url', false));
 		$linkOptions = ArrayHelper::getValue($item, 'linkOptions', []);
 
 		if (isset($item['active'])) {
