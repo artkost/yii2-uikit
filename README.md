@@ -30,3 +30,8 @@ or add
 
 to the require section of your `composer.json` file.
 
+
+Copyright and License
+---------------------
+
+Copyright [YOOtheme](http://www.yootheme.com) GmbH under the [MIT license](LICENSE.md).
